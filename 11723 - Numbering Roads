@@ -1,0 +1,12 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    //freopen("in.txt","r",stdin);
+    int a,b,cs=0;
+    while(scanf("%d%d",&a,&b)&&a&&b){
+            printf("Case %d: ",++cs);
+
+        (a/b)<=26?printf("%d\n",(a%b)?(a/b)+0:(a/b)-1):printf("impossible\n");
+    }
+}
