@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+int main()
+{
+    //freopen("in.txt","r",stdin);
+    ll a;
+    while(scanf("%lld",&a)&&a)
+    {
+        ll k=sqrt(a);
+        if(k*k!=a)
+            k++;
+        ll low=(k-1ll)*(k-1ll);
+        ll high=k*k;
+        ll mid=(low+high+1)>>1;
+        (k&1)?((mid>a)?printf("%lld %lld\n",k,k-(mid-a)):printf("%lld %lld\n",k-(a-mid),k)):((mid>a)?printf("%lld %lld\n",k-(mid-a),k):printf("%lld %lld\n",k,k-(a-mid)));
+
+    }
+    return 0;
+}
+
