@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+ll a[100000];
+int main()
+{
+    int p2,p3,p5,p7;
+    p2=p3=p5=p7=1;
+    a[1]=1;
+    for(int i=2;i<=5842;i++)
+    {
+        a[i]=min({a[p2]*2,a[p3]*3,a[p5]*5,a[p7]*7});
+        if(a[i]==a[p2]*2)p2++;
+        if(a[i]==a[p3]*3)p3++;
+        if(a[i]==a[p5]*5)p5++;
+        if(a[i]==a[p7]*7)p7++;
+
+    }
+    int n;
+    while(scanf("%d",&n)&&n)
+    {
+        char th[4];
+
+        if(n%10==1&&((n/10)%10)!=1)strcpy(th,"st");
+        else if(n%10==2&&((n/10)%10)!=1)strcpy(th,"nd");
+        else if(n%10==3&&((n/10)%10)!=1)strcpy(th,"rd");
+        else strcpy(th,"th");
+        printf("The %d%s humble number is %lld.\n",n,th,a[n]);
+
+    }
+    return 0;
+
+
+}
