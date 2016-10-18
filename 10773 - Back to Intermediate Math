@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    //freopen("in.txt","r",stdin);
+    int t,cs=0;
+    scanf("%d",&t);
+    while(t--)
+    {
+        float d,v,u;
+        scanf("%f%f%f",&d,&v,&u);
+        printf("Case %d: ",++cs);
+        if(u<=v)
+            {printf("can't determine\n");
+            continue;}
+        ((d/sqrt(u*u-v*v))-d/u)?printf("%.3f\n", ((d/sqrt(u*u-v*v))-d/u)):printf("can't determine\n");
+
+
+    }
+    return 0;
+
+}
