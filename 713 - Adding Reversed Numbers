@@ -1,0 +1,70 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    //freopen("in.txt","r",stdin);
+    int t;
+    scanf("%d",&t);
+    while(t--)
+    {
+        string a,b;
+        int carry=0,sum[300],siz=0;
+        cin>>a;
+        //cin.ignore();
+        cin>>b;
+        for(int i=a.length()-1;i>=0;i--)
+        {
+            if(a[i]>'0')
+                break;
+            a.pop_back();
+        }
+        for(int i=b.length()-1;i>=0;i--)
+        {
+            if(b[i]>'0')
+                break;
+            b.pop_back();
+        }
+        int as=a.length(),bs=b.length();
+        for(int i=0;i<as||i<bs;i++)
+        {
+
+            if(i<as&&i<bs)
+            sum[siz]=(a[i]-'0'+b[i]-'0')+carry;
+            else
+            {
+                if(i<as)
+                    sum[siz]=a[i]-'0'+carry;
+                else
+                    sum[siz]=b[i]-'0'+carry;
+            }
+            if(sum[siz]>=10)
+            {
+                sum[siz]=sum[siz]%10;
+                carry=1;
+            }
+            else
+                carry=0;
+          siz++;
+
+
+        }if(carry)sum[siz++]=carry;
+
+          int ch=0;
+          for(int i=0;i<siz;i++)
+          {
+              if(sum[i])
+              {
+                  printf("%d",sum[i]);
+                  ch=1;
+              }
+              if(ch&&(!sum[i]))
+              {
+                  printf("%d",sum[i]);
+              }
+          }
+          cout<<endl;
+
+    }
+    return 0;
+
+}
