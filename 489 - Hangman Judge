@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    //freopen("in.txt","r",stdin);
+    int a;
+    while(scanf("%d",&a)&&(a!=-1))
+    {
+        int visit[200];
+        memset(visit,0,sizeof(visit));
+        string s,c,f;
+        cin>>s>>c;
+        int wa=0;
+        map<char,int>mp;
+        set<char > ans,st;
+        for(auto j:s)
+        {
+            mp[j]++;
+            st.insert(j);
+        }
+        for(auto j:c)
+            {
+                if(!visit[j])
+                {
+                    visit[j]++;
+                    f.push_back(j);
+                }
+            }
+        for(auto j:f)
+        {
+            if(st.size()==ans.size()||wa==7)
+                break;
+
+            if(mp[j]==0)
+                wa++;
+            else
+                ans.insert(j);
+        }
+        printf("Round %d\n",a);
+        if(st.size()==ans.size())
+            cout<<"You win."<<endl;
+        else if(wa<7)
+            cout<<"You chickened out."<<endl;
+        else
+            cout<<"You lose."<<endl;
+
+
+    }
+    return 0;
+}
