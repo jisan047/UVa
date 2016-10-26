@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int ma=INT_MAX;
+int main()
+{
+
+    int p,h,nh,w;
+    while(scanf("%d%d%d%d",&p,&h,&nh,&w)!=EOF)
+    {
+        int ans=ma;
+        int x,y;
+        for(int i=0;i<nh;i++)
+        {
+            scanf("%d",&x);
+            for(int i=0;i<w;i++)
+            {
+                scanf("%d",&y);
+                if(y>=p)
+                    ans=min(ans,x*p);
+            }
+        }
+        if(ans!=ma&&ans<=h)
+        printf("%d\n",ans);
+        else
+            printf("stay home\n");
+    }
+
+}
