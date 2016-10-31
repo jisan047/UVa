@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    //freopen("in.txt","r",stdin);
+    float h,u,d,f;
+    while(scanf("%f%f%f%f",&h,&u,&d,&f)&&h)
+    {
+        int day =0;
+        float mn=f*u/100;
+        float nh=0;
+        while(1)
+        {
+            day++;
+            if(u>0)
+            nh+=u;
+            if(nh>h)
+                break;
+            nh-=d;
+            if(nh<0)
+                break;
+            u-=mn;
+
+
+        }
+        if(nh<0)
+            printf("failure on day %d\n",day);
+        else
+            printf("success on day %d\n",day);
+    }
+    return 0;
+}
