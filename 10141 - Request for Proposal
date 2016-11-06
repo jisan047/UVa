@@ -1,0 +1,58 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    //freopen("in.txt","r",stdin);
+    double n,p;
+    int cs=0;
+    while(true)
+    {
+        cin>>n>>p;
+        if(n==0&&p==0)
+            break;
+        char s[1001][90],ans[90],pn[90];
+        double che=0,ch;
+        cin.ignore();
+        for(int i=0;i<n;i++)
+        {
+
+            gets(s[i]);
+
+        }
+        double pr,req,money;
+        for(int i=0;i<p;i++)
+        {
+
+            gets(pn);
+
+
+            cin>>pr>>req;
+            cin.ignore();
+            for(int j=0;j<req;j++)
+            {
+
+                cin.ignore();
+                gets(s[j]);
+            }
+            ch=req/n;
+            if(ch>che)
+            {
+                che=ch;
+                money=pr;
+                strcpy(ans,pn);
+            }
+            else if(ch==che&&money>pr)
+            {
+                che=ch;
+                money=pr;
+                strcpy(ans,pn);
+            }
+
+
+        }
+        if(cs)
+            cout<<endl;
+        cout<<"RFP #"<<++cs<<endl;
+        cout<<ans<<endl;
+    }
+}
