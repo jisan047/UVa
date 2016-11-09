@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool cheak(char ans, char dir, char sgn)
+{
+    if(ans=='x'&&sgn=='-') return true;
+    else if(ans=='y'&&dir=='y'&&sgn=='+')return true;
+    else if(ans=='z'&&dir=='z'&&sgn=='+')return true;
+    return false ;
+
+}
+
+int main()
+{
+
+    int l;
+    while(scanf("%d",&l)&&l)
+    {
+
+        char ans='x';
+        int sign =1;
+        for(int i=1;i<l;i++)
+        {
+            string s;
+            cin>>s;
+            if(s[0]=='N')
+                continue;
+           if (cheak(ans,s[1],s[0]))sign=-sign;
+           if(ans=='x')ans=s[1];
+           else if(ans=='y'&&s[1]=='y')ans='x';
+           else if(ans=='z'&&s[1]=='z')ans='x';
+           //cout<<ans<<endl;
+
+
+
+        }
+        cout<<((sign<0)?"-":"+") <<ans<<endl;
+
+
+
+
+
+
+
+
+    }
+}
