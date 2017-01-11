@@ -1,0 +1,126 @@
+/**********************************************************************\
+|           _______  _     _____    ____   ___     _                   |
+|          |___   _|(_)   / ___/   / _  | |   \   | |                  |
+|              | |  | |  / /___   / /_| | | |\ \  | |                  |
+|           _  | |  | | /___  /  /  __  | | | \ \ | |                  |
+|           \ \| |  | | ___/ /  / /   | | | |  \ \| |                  |
+|            \___/  |_|/____/  /_/    |_| |_|   \___|                  |
+|                  Computer Science and Engineering                    |
+|  Bangabandhu Sheikh Mujibur Rahman Science and Technology University |
+|         devskill:jisancse||uva:jishan047||github:jisan047            |
+\**********************************************************************/
+
+/********************\
+|                    |
+|    lets try.....   |
+|                    |
+\********************/
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define sf scanf
+#define pf printf
+#define End return 0
+#define D double
+#define F float
+#define B break
+#define C continue
+#define pb push_back
+#define Pb pop_back
+#define pop __builtin_popcount
+#define gcd(a,b) __gcd(a,b)
+#define P pricision
+#define pii pair<int,int>
+#define pll pair<long,long>
+#define msi map<string,int>
+#define mis map<int,string>
+#define mss map<string,string>
+#define msb map<string,bool>
+#define loop(i,n) for(int i=0;i<n;i++)
+int Int()
+{
+    int x;
+    scanf("%d",&x);
+    return x;
+}
+ll Long()
+{
+    ll x;
+    scanf("%lld",&x);
+    return x;
+}
+D Double()
+{
+    D x;
+    scanf("%lf",&x);
+    return x;
+}
+F Float()
+{
+    F x;
+    scanf("%f",&x);
+    return x;
+}
+const int N=1e5+5;
+#define Int Int()
+#define Long Long()
+#define Double Double()
+#define Float Float()
+
+map<char,char> par;
+void create(char c)
+{
+    par[c]=c;
+}
+
+char finder(char s)
+{
+    if(par[s]==s)return s;
+    return par[s]=finder(par[s]);
+}
+
+void merger(char s,char p)
+{
+    char u=finder(s);
+    char v=finder(p);
+    par[u]=v;
+}
+
+// loading..................
+
+int main()
+{
+    int t=Int;
+    string k;
+    cin.ignore();
+    cin.ignore();
+    while(t--)
+    {
+
+        set <char > node,ans;
+        string s;
+        while(1)
+        {
+            getline(cin,s);
+            if(!s.size())B;
+            if(s.size()==1)
+            {
+                for(char i='A';i<=s[0];i++){
+                create(i);
+                node.insert(i);
+                }
+                C;
+            }
+            merger(s[0],s[1]);
+
+        }
+        for(auto j:node)ans.insert(finder(j));
+        cout<<ans.size()<<endl;
+        if(t)cout<<endl;
+        par.clear();
+
+    }
+
+    End;
+}
