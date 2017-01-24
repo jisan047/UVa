@@ -1,0 +1,139 @@
+/**********************************************************************\
+|           _______  _     _____    ____   ___     _                   |
+|          |___   _|(_)   / ___/   / _  | |   \   | |                  |
+|              | |  | |  / /___   / /_| | | |\ \  | |                  |
+|           _  | |  | | /___  /  /  __  | | | \ \ | |                  |
+|           \ \| |  | | ___/ /  / /   | | | |  \ \| |                  |
+|            \___/  |_|/____/  /_/    |_| |_|   \___|                  |
+|                  Computer Science and Engineering                    |
+|  Bangabandhu Sheikh Mujibur Rahman Science and Technology University |
+|         devskill:jisancse||uva:jishan047||github:jisan047            |
+\**********************************************************************/
+
+                /********************\
+                |                    |
+                |    lets try.....   |
+                |                    |
+                \********************/
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define sf scanf
+#define pf printf
+#define End return 0
+#define D double
+#define F float
+#define B break
+#define C continue
+#define pb push_back
+#define Pb pop_back
+#define pop __builtin_popcount
+#define gcd(a,b) __gcd(a,b)
+#define P pricision
+#define pii pair<int,int>
+#define pll pair<long,long>
+#define msi map<string,int>
+#define mis map<int,string>
+#define mss map<string,string>
+#define msb map<string,bool>
+#define loop(i,n) for(int i=0;i<n;i++)
+int Int(){int x;scanf("%d",&x);return x;}
+ll Long(){ll x;scanf("%lld",&x);return x;}
+D Double(){D x;scanf("%lf",&x);return x;}
+F Float(){F x;scanf("%f",&x);return x;}
+const int N=1e5+5;
+#define Int Int()
+#define Long Long()
+#define Double Double()
+#define Float Float()
+//Trying to do something.
+//()()()()()()()()() ..... ()()()()()()()()()()()()
+//~~~~~~~~~~~~~~~~~~~~~~Get Ready~~~~~~~~~~~~~~~~~~~~~
+
+///DSU
+/*void MakeSet(){
+    par[n]=n;
+}
+void Find(){
+    if(par[n]==n) return n;
+    return par[n]=Find(par[n]);
+}
+void Union(){
+    u=Find(n1);
+    v=Find(n2);
+
+}*/
+
+///BigMod
+/*int BigMod(int base,int power,int div){
+    int x;
+    if(power==0)return 1;
+    if(power&1) return (base%div*BigMod(base,power-1,div)%div)%div;
+    x=BigMod(base,power/2,div);
+    return (x%div*x%div)%div;
+
+
+}*/
+struct trie{
+    trie* next[10];
+    bool endmark;
+    trie(){
+    for(int i=0;i<10;i++)next[i]=NULL;
+    endmark=false;
+    }
+
+
+} *root;
+
+bool add(string s){
+    trie* cur=root;
+    bool ishere=true;
+    bool mark=false;
+    for(int i=0;s[i];i++){
+        int id=s[i]-'0';
+        if(cur->next[id]==NULL){
+            cur->next[id]= new trie();
+            ishere=false;
+        }
+        cur=cur->next[id];
+        if(cur->endmark)mark=true;
+
+    }
+    cur->endmark=true;
+    if(mark)return mark;
+    return ishere;
+
+}
+void del(trie* root){
+    for(int i=0;i<10;i++){
+        if(root->next[i])
+            del(root->next[i]);
+    }
+    delete(root);
+}
+
+
+// loading..................
+
+int main()
+{
+
+    int t=Int;
+    while(t--){
+        root =new trie();
+        int n=Int;
+        bool cheaker=true;
+        for(int i=0;i<n;i++){
+            string s;
+            cin>>s;
+            if(add(s))cheaker=false;
+        }
+        cout<<(cheaker?"YES":"NO")<<endl;
+        del(root);
+    }
+
+
+    End;
+}
+
