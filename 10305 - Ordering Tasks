@@ -1,0 +1,104 @@
+/**********************************************************************\
+|           _______  _     _____    ____   ___     _                   |
+|          |___   _|(_)   / ___/   / _  | |   \   | |                  |
+|              | |  | |  / /___   / /_| | | |\ \  | |                  |
+|           _  | |  | | /___  /  /  __  | | | \ \ | |                  |
+|           \ \| |  | | ___/ /  / /   | | | |  \ \| |                  |
+|            \___/  |_|/____/  /_/    |_| |_|   \___|                  |
+|                  Computer Science and Engineering                    |
+|  Bangabandhu Sheikh Mujibur Rahman Science and Technology University |
+|         devskill:jisancse||uva:jishan047||github:jisan047            |
+\**********************************************************************/
+
+                /********************\
+                |                    |
+                |    lets try.....   |
+                |                    |
+                \********************/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+///pre-processing
+#define     gcd(a, b)       __gcd(a,b)
+#define     lcm(a, b)       (a * b) / gcd(a, b)
+#define     loop(i, n)      for(int i=0;i<n;i++)
+#define     all(x)          x.begin(),x.end()
+#define     mem(a, x)       memset(a,x,sizeof a)
+#define     endl            '\n'
+#define     ss              second
+#define     ff              first
+#define     TN              typename
+
+///input functions
+int Int(){int x;scanf("%d",&x);return x;}
+long long Long(){long long x;scanf("%lld",&x);return x;}
+double Double(){double x;scanf("%lf",&x);return x;}
+
+///input functions shorting
+#define Int Int()
+#define Long Long()
+#define Double Double()
+#define Float Float()
+
+///Constants
+const int N = 3 * (int) 1e3 + 5;
+const long long MOD = (int) 1e9 + 7;
+
+///BitMask
+int Set(int a, int x){return (a |= (1 << x));}
+int Reset(int a, int x){return (a &= ~(1 << x));}
+bool Isset(int a, int x){return (bool) (a & (1 << x));}
+
+//Trying to do something.
+//()()()()()()()()() ..... ()()()()()()()()()()()()
+//~~~~~~~~~~~~~~~~~~~~~~Get Ready~~~~~~~~~~~~~~~~~~~~~
+
+///debugger
+
+///end
+
+// loading..................
+vector<int> g[N];
+bool used[N];
+vector<int> ans;
+
+void dfs(int u){
+    used[u] = true;
+    for(auto v: g[u]){
+        if(!used[v])dfs(v);
+    }
+    ans.push_back(u);
+}
+
+void toposort(int n){
+    for(int i = 1; i <= n; i++){
+        if(!used[i]){   
+            dfs(i);
+        }
+    }
+    reverse(all(ans));
+}
+
+int main(){
+    //freopen("input.txt","r",stdin);
+    int m, n;
+    while(scanf("%d%d", &n, &m) and (m or n)){
+        for(int i = 0; i < N; i++){
+            used[i] = false;
+            g[i].clear();
+        }
+        ans.clear();
+        for(int i = 0; i < m; i++){
+            int u = Int, v = Int;
+            g[u].push_back(v);
+        }
+        toposort(n);
+        for(int i = 0; i < ans.size(); i++){
+            if(i)cout << ' ';
+            cout << ans[i];
+        }
+        cout << endl;
+    }
+    return 0;
+}
