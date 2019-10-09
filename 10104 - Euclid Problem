@@ -1,0 +1,92 @@
+/**********************************************************************\
+|           _______  _     _____    ____   ___     _                   |
+|          |___   _|(_)   / ___/   / _  | |   \   | |                  |
+|              | |  | |  / /___   / /_| | | |\ \  | |                  |
+|           _  | |  | | /___  /  /  __  | | | \ \ | |                  |
+|           \ \| |  | | ___/ /  / /   | | | |  \ \| |                  |
+|            \___/  |_|/____/  /_/    |_| |_|   \___|                  |
+|                  Computer Science and Engineering                    |
+|  Bangabandhu Sheikh Mujibur Rahman Science and Technology University |
+|         devskill:jisancse||uva:jishan047||github:jisan047            |
+\**********************************************************************/
+
+                /********************\
+                |                    |
+                |    lets try.....   |
+                |                    |
+                \********************/
+
+#include<bits/stdc++.h>
+//#include <ext/pb_ds/assoc_container.hpp> 
+
+using namespace std;
+//using namespace __gnu_pbds;
+
+////Policy based data structure
+//typedef tree<int, null_type, less<int>, rb_tree_tag, 
+//             tree_order_statistics_node_update> pbdsset; 
+
+///pre-processing
+#define     gcd(a, b)       __gcd(a,b)
+#define     lcm(a, b)       (a * b) / gcd(a, b)
+#define     loop(i, n)      for(int i=0;i<n;i++)
+#define     all(x)          x.begin(),x.end()
+#define     mem(a, x)       memset(a,x,sizeof a)
+#define     endl            '\n'
+#define     ss              second
+#define     ff              first
+#define     TN              typename
+
+///input functions
+int Int(){int x;scanf("%d",&x);return x;}
+long long Long(){long long x;scanf("%lld",&x);return x;}
+double Double(){double x;scanf("%lf",&x);return x;}
+
+///input functions shorting
+#define Int Int()
+#define Long Long()
+#define Double Double()
+#define Float Float()
+
+///Constants
+const int N = 3 * (int) 1e5 + 5;
+const long long MOD = (int) 1e9 + 7;
+
+///BitMask
+int Set(int a, int x){return (a |= (1 << x));}
+int Reset(int a, int x){return (a &= ~(1 << x));}
+bool Isset(int a, int x){return (bool) (a & (1 << x));}
+
+//Trying to do something.
+//()()()()()()()()() ..... ()()()()()()()()()()()()
+//~~~~~~~~~~~~~~~~~~~~~~Get Ready~~~~~~~~~~~~~~~~~~~~~
+
+///debugger
+
+///end
+
+// loading..................
+int GCD(int a, int b, int &x, int &y){
+    if(a == 0){
+        x = 0;
+        y = 1;
+        return b;
+    }
+    int x1, y1;
+    int d = GCD(b % a, a, x1, y1);
+    x = y1 - (b / a) * x1;
+    y = x1;
+    return d;
+}
+
+int main(){
+    //freopen("input.txt","r",stdin);
+    int a, b;
+    while(scanf("%d%d",&a, &b) != EOF){
+        int x, y;
+        int d = GCD(a, b, x, y);
+        if(x == 1 and y == 0 and a == b)swap(x, y);
+        printf("%d %d %d\n", x, y, d);
+    }
+    return 0;
+}
